@@ -10,7 +10,7 @@
   position: relative;
   width: min(100%, 460px);
   box-sizing: border-box;
-  padding: 0 36px 36px;
+  padding: 0 36px 48px;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 30px;
@@ -35,17 +35,18 @@
   background: var(--surface);
   cursor: pointer;
   box-shadow: 0 2px 10px rgb(0 0 0 / 12%);
-  transition: background-color 180ms ease, color 180ms ease;
+  touch-action: manipulation;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .theme-toggle svg {
   width: 20px;
   height: 20px;
+  transition: transform 220ms ease;
 }
 
-.theme-toggle:hover {
-  color: var(--hover-ink);
-  background: var(--hover-bg);
+.theme-toggle[aria-pressed="true"] svg {
+  transform: rotate(180deg);
 }
 
 .theme-toggle:focus-visible {
@@ -76,7 +77,6 @@
   margin: -66px auto 24px;
   border-radius: 50%;
   object-fit: cover;
-  filter: grayscale(1);
   box-shadow: 0 0 0 6px var(--surface), 0 0 0 7px var(--photo-border);
 }
 
@@ -118,16 +118,29 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
+  touch-action: manipulation;
   transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
 }
 
-.social-link:hover {
-  color: var(--hover-ink);
-  background: var(--hover-bg);
+@media (hover: hover) and (pointer: fine) {
+  .social-link:hover,
+  .theme-toggle:hover {
+    color: var(--hover-ink);
+    background: var(--hover-bg);
+    transform: translateY(-2px);
+  }
+
+  .social-link:hover .social-arrow {
+    transform: translate(2px, -2px);
+  }
 }
 
-.social-link:active {
-  transform: translateY(1px);
+.social-link:active,
+.theme-toggle:active {
+  color: var(--hover-ink);
+  background: var(--hover-bg);
+  transform: scale(0.98);
+  transition-duration: 80ms;
 }
 
 .social-link:focus-visible {
@@ -147,6 +160,7 @@
   width: 21px;
   height: 21px;
   justify-self: end;
+  transition: transform 180ms ease;
 }
 
 @media (max-width: 520px) {
@@ -160,7 +174,7 @@
     min-height: 100svh;
     display: flex;
     flex-direction: column;
-    padding: 0 24px max(40px, env(safe-area-inset-bottom));
+    padding: 0 24px max(56px, env(safe-area-inset-bottom));
     border: 0;
     border-radius: 0;
     box-shadow: none;
@@ -174,7 +188,18 @@
 
 @media (prefers-reduced-motion: reduce) {
   .social-link,
-  .theme-toggle {
+  .theme-toggle,
+  .social-arrow,
+  .theme-toggle svg {
     transition: none;
+  }
+
+  .social-link:hover,
+  .social-link:active,
+  .theme-toggle:hover,
+  .theme-toggle:active,
+  .social-link:hover .social-arrow,
+  .theme-toggle[aria-pressed="true"] svg {
+    transform: none;
   }
 }

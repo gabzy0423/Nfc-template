@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { readTheme, saveTheme } from './theme.js'
-import samplePhoto from './assets/sample-profile.webp'
+import profilePhoto from './assets/gabriel-profile.webp'
 import sampleCover from './assets/sample-cover.webp'
 import instagramIcon from './assets/social-icons/instagram.svg'
 import facebookIcon from './assets/social-icons/facebook.svg'
@@ -8,14 +8,13 @@ import tiktokIcon from './assets/social-icons/tiktok.svg'
 import './App.css'
 
 const profile = {
-  name: 'Alex Santos',
-  photo: samplePhoto,
+  name: 'Gabriel Vargas',
+  photo: profilePhoto,
   cover: sampleCover,
-  // shortcut: These demo URLs open platform homepages; replace them with a student's profile URLs before publishing their card.
   socials: [
-    { name: 'Instagram', url: 'https://www.instagram.com/', icon: instagramIcon },
-    { name: 'Facebook', url: 'https://www.facebook.com/', icon: facebookIcon },
-    { name: 'TikTok', url: 'https://www.tiktok.com/', icon: tiktokIcon },
+    { name: 'Instagram', url: 'https://www.instagram.com/simmog4mbino/', icon: instagramIcon },
+    { name: 'Facebook', url: 'https://www.facebook.com/winfred.gabriel.98', icon: facebookIcon },
+    { name: 'TikTok', url: 'https://www.tiktok.com/@exclsv_g?_r=1&_t=ZS-9B9Hsi9diZI', icon: tiktokIcon },
   ],
 }
 
@@ -56,7 +55,7 @@ function App() {
         </div>
         <img className="profile-photo" src={profile.photo} alt={`Portrait of ${profile.name}`} />
         <h1 id="profile-name">{profile.name}</h1>
-        <p className="profile-intro">Find me online</p>
+        <p className="profile-intro">You found me. Now say hi.</p>
 
         <nav aria-label={`${profile.name}'s social profiles`}>
           <ul className="social-list">
