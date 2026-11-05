@@ -7,15 +7,50 @@
 }
 
 .profile-card {
+  position: relative;
   width: min(100%, 460px);
   box-sizing: border-box;
   padding: 0 36px 36px;
   overflow: hidden;
-  border: 1px solid #e7e7e7;
+  border: 1px solid var(--border);
   border-radius: 30px;
-  background: #fff;
+  background: var(--surface);
   box-shadow: 0 24px 72px rgb(0 0 0 / 6%);
   text-align: center;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: max(12px, env(safe-area-inset-top));
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--ink);
+  background: var(--surface);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 12%);
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.theme-toggle:hover {
+  color: var(--hover-ink);
+  background: var(--hover-bg);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
 }
 
 .profile-cover {
@@ -42,7 +77,7 @@
   border-radius: 50%;
   object-fit: cover;
   filter: grayscale(1);
-  box-shadow: 0 0 0 6px #fff, 0 0 0 7px #d8d8d8;
+  box-shadow: 0 0 0 6px var(--surface), 0 0 0 7px var(--photo-border);
 }
 
 .profile-card h1 {
@@ -56,7 +91,7 @@
 
 .profile-intro {
   margin: 12px 0 34px;
-  color: #555;
+  color: var(--muted);
   font-size: 15px;
 }
 
@@ -75,10 +110,10 @@
   align-items: center;
   gap: 12px;
   padding: 0 20px;
-  border: 1px solid #171717;
+  border: 1px solid var(--button-border);
   border-radius: 16px;
-  color: #111;
-  background: #fff;
+  color: var(--ink);
+  background: var(--surface);
   text-align: left;
   text-decoration: none;
   font-size: 18px;
@@ -87,8 +122,8 @@
 }
 
 .social-link:hover {
-  color: #fff;
-  background: #111;
+  color: var(--hover-ink);
+  background: var(--hover-bg);
 }
 
 .social-link:active {
@@ -96,7 +131,7 @@
 }
 
 .social-link:focus-visible {
-  outline: 3px solid #111;
+  outline: 3px solid var(--ink);
   outline-offset: 3px;
 }
 
@@ -138,7 +173,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .social-link {
+  .social-link,
+  .theme-toggle {
     transition: none;
   }
 }
