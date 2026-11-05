@@ -83,15 +83,12 @@
   outline-offset: 3px;
 }
 
-.social-number {
-  color: #666;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-
-.social-link:hover .social-number {
-  color: #d4d4d4;
+.social-icon {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border-radius: 6px;
+  background: #fff;
 }
 
 .social-arrow {
