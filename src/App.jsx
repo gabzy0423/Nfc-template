@@ -1,4 +1,5 @@
 import samplePhoto from './assets/sample-profile.png'
+import sampleCover from './assets/sample-cover.png'
 import instagramIcon from './assets/social-icons/instagram.svg'
 import facebookIcon from './assets/social-icons/facebook.svg'
 import tiktokIcon from './assets/social-icons/tiktok.svg'
@@ -7,6 +8,7 @@ import './App.css'
 const profile = {
   name: 'Alex Santos',
   photo: samplePhoto,
+  cover: sampleCover,
   // shortcut: These demo URLs open platform homepages; replace them with a student's profile URLs before publishing their card.
   socials: [
     { name: 'Instagram', url: 'https://www.instagram.com/', icon: instagramIcon },
@@ -19,6 +21,9 @@ function App() {
   return (
     <main className="profile-page">
       <article className="profile-card" aria-labelledby="profile-name">
+        <div className="profile-cover">
+          <img src={profile.cover} alt="" />
+        </div>
         <img className="profile-photo" src={profile.photo} alt={`Portrait of ${profile.name}`} />
         <h1 id="profile-name">{profile.name}</h1>
         <p className="profile-intro">Find me online</p>
