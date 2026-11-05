@@ -16,8 +16,6 @@ function App() {
   return (
     <main className="profile-page">
       <article className="profile-card" aria-labelledby="profile-name">
-        <p className="profile-label">STUDENT PROFILE</p>
-
         <img className="profile-photo" src={profile.photo} alt={`Portrait of ${profile.name}`} />
         <h1 id="profile-name">{profile.name}</h1>
         <p className="profile-intro">Find me online</p>
