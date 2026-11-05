@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { readTheme, saveTheme } from './theme.js'
+import { playClickSound } from './clickSound.js'
 import profilePhoto from './assets/gabriel-profile.webp'
+import fullProfilePhoto from './assets/gabriel-profile-full.webp'
 import sampleCover from './assets/sample-cover.webp'
 import instagramIcon from './assets/social-icons/instagram.svg'
 import facebookIcon from './assets/social-icons/facebook.svg'
@@ -19,6 +21,7 @@ const profile = {
 }
 
 function App() {
+  const photoDialog = useRef(null)
   const [theme, setTheme] = useState(readTheme)
   const isDark = theme === 'dark'
 
@@ -29,7 +32,14 @@ function App() {
   }, [theme])
 
   return (
-    <main className="profile-page">
+    <main
+      className="profile-page"
+      onClickCapture={(event) => {
+        if (event.target.closest('button, a[href]') || event.target === photoDialog.current) {
+          playClickSound()
+        }
+      }}
+    >
       <article className="profile-card" aria-labelledby="profile-name">
         <button
           className="theme-toggle"
@@ -53,7 +63,15 @@ function App() {
         <div className="profile-cover">
           <img src={profile.cover} alt="" />
         </div>
-        <img className="profile-photo" src={profile.photo} alt={`Portrait of ${profile.name}`} />
+        <button
+          className="profile-photo-trigger"
+          type="button"
+          aria-label={`View full photo of ${profile.name}`}
+          aria-haspopup="dialog"
+          onClick={() => photoDialog.current.showModal()}
+        >
+          <img className="profile-photo" src={profile.photo} alt={`Portrait of ${profile.name}`} />
+        </button>
         <h1 id="profile-name">{profile.name}</h1>
         <p className="profile-intro">You found me. Now say hi.</p>
 
@@ -73,6 +91,23 @@ function App() {
           </ul>
         </nav>
       </article>
+      <dialog
+        ref={photoDialog}
+        className="photo-modal"
+        aria-label={`Full photo of ${profile.name}`}
+        onClick={(event) => {
+          if (event.target === event.currentTarget) event.currentTarget.close()
+        }}
+      >
+        <form method="dialog" className="photo-modal-content">
+          <button className="photo-modal-close" type="submit" aria-label="Close photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <path d="m6 6 12 12M6 18 18 6" />
+            </svg>
+          </button>
+          <img className="photo-modal-image" src={fullProfilePhoto} alt={`Full photo of ${profile.name}`} loading="lazy" width="960" height="1280" />
+        </form>
+      </dialog>
     </main>
   )
 }
