@@ -1,5 +1,5 @@
-import samplePhoto from './assets/sample-profile.png'
-import sampleCover from './assets/sample-cover.png'
+import samplePhoto from './assets/sample-profile.webp'
+import sampleCover from './assets/sample-cover.webp'
 import instagramIcon from './assets/social-icons/instagram.svg'
 import facebookIcon from './assets/social-icons/facebook.svg'
 import tiktokIcon from './assets/social-icons/tiktok.svg'
