@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { readTheme, saveTheme } from './theme.js'
 import { playClickSound } from './clickSound.js'
-import profilePhoto from './assets/gabriel-profile.webp'
-import fullProfilePhoto from './assets/gabriel-profile-full.webp'
+import profilePhoto from './assets/carl-profile.webp'
+import fullProfilePhoto from './assets/carl-profile-full.webp'
 import sampleCover from './assets/sample-cover.webp'
 import instagramIcon from './assets/social-icons/instagram.svg'
 import facebookIcon from './assets/social-icons/facebook.svg'
@@ -105,7 +105,7 @@ function App() {
               <path d="m6 6 12 12M6 18 18 6" />
             </svg>
           </button>
-          <img className="photo-modal-image" src={fullProfilePhoto} alt={`Full photo of ${profile.name}`} loading="lazy" width="960" height="1280" />
+          <img className="photo-modal-image" src={fullProfilePhoto} alt={`Full photo of ${profile.name}`} loading="lazy" width="720" height="1280" />
         </form>
       </dialog>
     </main>
