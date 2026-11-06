@@ -10,7 +10,7 @@ import tiktokIcon from './assets/social-icons/tiktok.svg'
 import './App.css'
 
 const profile = {
-  name: 'Gabriel Vargas',
+  name: 'Carl Angelo Perciana',
   photo: profilePhoto,
   cover: sampleCover,
   socials: [
