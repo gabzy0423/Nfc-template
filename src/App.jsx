@@ -14,8 +14,8 @@ const profile = {
   photo: profilePhoto,
   cover: sampleCover,
   socials: [
-    { name: 'Instagram', url: 'https://www.instagram.com/simmog4mbino/', icon: instagramIcon },
-    { name: 'Facebook', url: 'https://www.facebook.com/winfred.gabriel.98', icon: facebookIcon },
+    { name: 'Instagram', url: 'https://www.instagram.com/nturcrl?psln=MTY0YThnbnlnaHU4bA==', icon: instagramIcon },
+    { name: 'Facebook', url: 'https://www.facebook.com/share/19jpXh1NGj/', icon: facebookIcon },
     { name: 'TikTok', url: 'https://www.tiktok.com/@exclsv_g?_r=1&_t=ZS-9B9Hsi9diZI', icon: tiktokIcon },
   ],
 }
